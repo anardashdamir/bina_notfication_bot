@@ -81,7 +81,7 @@ async def start_(message: types.Message):
         while True:
             if url:
                 for user_file in os.listdir('data'):
-                    with open(rf'data\{user_file}', 'r') as f:
+                    with open(rf'data/{user_file}', 'r') as f:
                         rec = json.load(f)
 
                     new_posts = await fetch_latest_post(rec)
