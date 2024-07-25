@@ -45,6 +45,22 @@ async def fetch_latest_post(recording):
                 logging.error(f"Failed to fetch {recording['url']} with status {response.status}")
                 return None
 
+
+@dp.message_handler(commands=["quit"])
+async def quit_(message: types.Message):
+
+    chat_id = message.chat.id
+    username = message.from_user.username
+
+    path_for_del = rf'data/{username}_{chat_id}.json'
+
+    if os.path.exists(path_for_del):
+        os.remove(path_for_del)
+
+    await message.reply("Bot deaktiv edildi!")
+
+
+
 # Start
 @dp.message_handler(commands=["start"])
 async def start_(message: types.Message):
