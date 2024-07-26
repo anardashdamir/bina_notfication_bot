@@ -84,7 +84,6 @@ async def start_(message: types.Message):
         else:
             with open(data_path, 'r') as f:
                 user_data = json.load(f)
-                print(user_data)                   ######
                 user_data['url'] = url
             with open(data_path, 'w') as f:
                 json.dump(user_data, f, indent=4)
